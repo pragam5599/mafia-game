@@ -1,0 +1,22 @@
+{
+  "cli": {
+    "version": ">= 16.0.0",
+    "appVersionSource": "local"
+  },
+  "build": {
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_FIREBASE_MODE": "live",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyCLQ5O8yuIEMtvCST5ysjVQX-8gV7zRUQA",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "mafia5599.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "mafia5599",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:654432288568:web:4be45c9bf32f3c07838bcd",
+        "EXPO_PUBLIC_SERVER_URL": "https://mafia-server-ten.vercel.app"
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# What EAS Build uploads: the app only. (Replaces .gitignore for EAS.)
+node_modules/
+.expo/
+dist/
+web-build/
+/ios
+/android
+.env*
+*.jks
+*.p8
+*.p12
+*.key
+*.pem
+*-debug.log
+.emulator-data/
+functions/
+tests/
+docs/
+public/
+scripts/
+.claude/
+.firebase/
+*service-account*.json
+*adminsdk*.json

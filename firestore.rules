@@ -1,0 +1,80 @@
+rules_version = '2';
+
+// Privacy (CLAUDE.md): a player reads only their own role (+ Mafia partners, written into their
+// role doc by the server). Only the narrator reads all roles and who voted whom. Dead chat is
+// readable only by eliminated players. All game writes go through Cloud Functions.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function room(code) {
+      return get(/databases/$(database)/documents/rooms/$(code)).data;
+    }
+
+    function isNarrator(code) {
+      return signedIn() && room(code).game != null && room(code).game.narratorId == request.auth.uid;
+    }
+
+    function isDead(code) {
+      return signedIn() && room(code).game != null && request.auth.uid in room(code).game.dead;
+    }
+
+    // Public profiles: the name the player typed.
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow write: if false;
+
+      // The room a player is in, to get back after a dropped phone. Only they can read it.
+      match /private/{doc} {
+        allow read: if signedIn() && request.auth.uid == uid;
+        allow write: if false;
+      }
+    }
+
+    match /rooms/{code} {
+      // Lobby + public game view (phase, timers, who is alive, announcements, "Voted: X of N").
+      allow read: if signedIn() && request.auth.uid in resource.data.memberIds;
+      allow write: if false;
+
+      // One doc per player: { role, partners }. Readable by that player and the narrator.
+      match /roles/{uid} {
+        allow read: if signedIn() && (request.auth.uid == uid || isNarrator(code));
+        allow write: if false;
+      }
+
+      // Narrator control panel: every role, the night draft, who voted whom.
+      match /narrator/{doc} {
+        allow read: if isNarrator(code);
+        allow write: if false;
+      }
+
+      // Full engine state: server only.
+      match /private/{doc} {
+        allow read, write: if false;
+      }
+
+      // Dead chat: eliminated players only, both to read and to write.
+      match /deadChat/{messageId} {
+        allow read: if isDead(code);
+        allow create: if isDead(code)
+          && request.resource.data.keys().hasOnly(['authorId', 'authorName', 'text', 'sentAt'])
+          && request.resource.data.authorId == request.auth.uid
+          && request.resource.data.authorName == get(/databases/$(database)/documents/users/$(request.auth.uid)).data.username
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0
+          && request.resource.data.text.size() <= 300
+          && request.resource.data.sentAt == request.time;
+        allow update, delete: if false;
+      }
+    }
+
+    // Anything else: closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

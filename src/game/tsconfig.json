@@ -1,0 +1,15 @@
+{
+  // The rules engine is plain TypeScript shared with the Cloud Functions: no React Native, no DOM.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022"],
+    "types": [],
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": ["./**/*.ts"]
+}

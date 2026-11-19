@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="94" height="94" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="Wax" d="M94 47L89.73 51.81L92.82 57.46L87.59 61.2L89.35 67.39L83.41 69.88L83.75 76.3L77.41 77.41L76.3 83.75L69.88 83.41L67.39 89.35L61.2 87.59L57.46 92.82L51.81 89.73L47 94L42.19 89.73L36.54 92.82L32.8 87.59L26.61 89.35L24.12 83.41L17.7 83.75L16.59 77.41L10.25 76.3L10.59 69.88L4.65 67.39L6.41 61.2L1.18 57.46L4.27 51.81L0 47L4.27 42.19L1.18 36.54L6.41 32.8L4.65 26.61L10.59 24.12L10.25 17.7L16.59 16.59L17.7 10.25L24.12 10.59L26.61 4.65L32.8 6.41L36.54 1.18L42.19 4.27L47 0L51.81 4.27L57.46 1.18L61.2 6.41L67.39 4.65L69.88 10.59L76.3 10.25L77.41 16.59L83.75 17.7L83.41 24.12L89.35 26.61L87.59 32.8L92.82 36.54L89.73 42.19L94 47Z" fill="url(#paint0_radial_0_6)"/>
+<defs>
+<radialGradient id="paint0_radial_0_6" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(37.6 32.9) scale(65.8)">
+<stop stop-color="#E0303C"/>
+<stop offset="0.6" stop-color="#C1121F"/>
+<stop offset="1" stop-color="#6E0B12"/>
+</radialGradient>
+</defs>
+</svg>

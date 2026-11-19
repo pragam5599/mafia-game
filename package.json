@@ -1,0 +1,52 @@
+{
+  "name": "mafia",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "dependencies": {
+    "@expo-google-fonts/barlow-condensed": "^0.4.1",
+    "@expo-google-fonts/bodoni-moda": "^0.4.2",
+    "@expo-google-fonts/dm-sans": "^0.4.2",
+    "@expo-google-fonts/spectral": "^0.4.1",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo": "~57.0.31",
+    "expo-camera": "~57.0.6",
+    "expo-constants": "~57.0.22",
+    "expo-font": "~57.0.4",
+    "expo-image": "~57.0.5",
+    "expo-keep-awake": "~57.0.2",
+    "expo-linear-gradient": "~57.0.2",
+    "expo-linking": "~57.0.13",
+    "expo-router": "~57.0.29",
+    "expo-splash-screen": "~57.0.10",
+    "expo-status-bar": "~57.0.1",
+    "firebase": "^13.1.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-qrcode-svg": "^6.3.26",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "~4.26.0",
+    "react-native-svg": "15.15.4",
+    "react-native-web": "^0.21.4"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.4",
+    "typescript": "~6.0.3",
+    "vitest": "^3.2.4"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "emulators": "node scripts/emulators.mjs",
+    "test:emulator": "npm --prefix functions run build && firebase emulators:exec --project demo-mafia \"vitest run -c vitest.emulator.config.ts\"",
+    "build:web": "expo export -p web --clear",
+    "deploy": "npm run build:web && firebase deploy --project live --only firestore,hosting",
+    "deploy:server": "cd functions && npx vercel build --prod && npx vercel deploy --prebuilt --prod"
+  },
+  "private": true
+}
