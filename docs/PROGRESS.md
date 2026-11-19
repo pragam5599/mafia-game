@@ -110,4 +110,12 @@
 - Live test (5 real guest accounts, no fakes): full game to "Town wins"; players cannot read others' roles
   or the narrator panel on the live database.
 - Open: an unused second admin key (id 7fc68e6278…) exists; delete it in Google Cloud → IAM → Service accounts.
-### Step 4 · APK — next (needs a free Expo account)
+### Step 4 · APK (2026-11-20)
+- Expo account `pragamsingh` (Google sign-in), EAS project @pragamsingh/mafia, Android package com.pragam.mafia.
+  Keystore made and kept by EAS. `eas.json` profile `preview` = APK with the live env. `.easignore` uploads the
+  app only. Build: `EAS_NO_VCS=1 npx eas-cli build -p android --profile preview` (free queue: 10–40 min).
+- v1.0.0 APK (139 MB, live config checked) in GitHub Release v1.0.0. Not yet installed on a real Android phone.
+### Step 5–6 · GitHub + README (2026-11-20)
+- Public repo https://github.com/pragam5599/mafia-game (commits use the GitHub noreply email). gh CLI installed
+  in ~/.local/bin (official release, checksum verified). README: friends (Android, iPhone, how to play) + "For
+  Pragam" (update and re-release).
